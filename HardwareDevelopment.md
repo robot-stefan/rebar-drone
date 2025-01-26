@@ -1,0 +1,44 @@
+## Hardware Development
+
+<img src="/images/rebar-drone-simple-render.png" alt="Simple Render of Rebar Drone" width="650">
+
+#### Initial Sprint
+To speed up development, getting the overall layout sized just enough for the frame to be firmed up allowed for parallelizing of the tooling X, Y, Z system, rest of the drone build to start, and iterations of the tool holder all to happen in parallel. This was key for getting to the trade show and the initial system stood up in a month. The drone was made from cut to length carbon fiber tube, 3d printed parts, laser / water jet cut plates and a collection of off the shelf electronics. This initial system wasn’t quite yet flight capable and was on static display during the trade show[^tradeshow]. 
+
+<img src="/images/rebar-drone-at-WoC.jpg" alt="Alt Text" width="550" align="center">
+
+Its function at the show was mostly getting feedback and connecting with more construction companies which got us on to more construction sites[^discovery].The plates and electronics were some of the longest lead time parts coming in at days with the rest of the parts having print times up to 20 hrs.  The carbon fiber tubes, 80/20 extrusions, and fasteners were available same day from McMaster-Carr. The gantry system was partly made from camera sliders off of amazon which were then adapted to the drone system with custom prints. You can see some of the original parts present on the 80/20 stand and fewer of them on the actual drone. 
+
+
+| Gantry Test Stand | Gantry On Drone | 
+| :---: | :---: | 
+| ![image_of_test_stand](/images/rebar-drone-gantry-test-stand.jpg) | ![image_of_gantry_on_drone](/images/rebar-drone-gantry-mockup-v1.jpg) | 
+
+The first image shows a test stand setup which allowed the tool system to be iterated on without being mounted to the drone. The second shows the tooling system being integrated into the drone. The Third shows one of the many iterations on the tool holding system. The off-the-shelf power tool was mounted in a holder. Even though it was scanned, the scan data coupled with the print did produce some regions of higher inaccuracies than others so iterations with offsets and weight reduction (and print time) were done.
+
+#### Follow on Development Cycles
+After the initial cycle the theme of parallelized development was maintained by converting P2 to a test and development mule. P2 was a lot smaller and much safer to experiment with and simpler to fix after a crash as P2 didn’t have the tool system like P3 had. Software was able to use P2 to test out getting the motion capture system running and controlling a craft with scripts before trying with the larger P3. P3 was also able to be taken out of commission at times for upgrades without blocking the people working on software with P2. The tool system would go through a dozen revisions addressing issuses with robustness for landings, and weight reduction while accomodating the tools mass and these revisions would take P3 out of action during retrofit. 
+
+P2 also acted to test out RTK systems, various single board computers, cameras, and other subsystems such as some of the custom battery monitoring modules. These single board computers were not dealing with flight critical functions, but were instead doing a host of tasks like managing the tool system once landed, or interfacing with various cameras to allow for navigation.  This meant when systems made it to P3 the flight tests were testing out things specific to the module on P3 and not discovering fundamental / first time use issues that might risk crashing P3 and slowing down development more than necessary.  
+
+> P3 was not a go to market effort, but a get through fundamental tech development and uncover what key performance targets and design reqirements an initial product should have. Spending too much effort making P3 perfect would have jepoardized other development activites such as control, sensing, and perception. 
+
+3d printing greatly compressed development cycles and allowed for relatively quick assembly. To support flight test sprints, spares of printed parts were kept on hand. After crashes the 3d prints were swapped out and printers were tasked with printing more spares. Depending on the crash the drone could be back to flight testing anywhere from 30 minutes to 90 minutes. Some crashes were much more substantial than others.
+
+#### Surfboards / Skateboard
+In addition to the use of P2 to test concepts and “go deep quick” a tool I like to refer to as surfboards or skateboards was used to look at some sensors. A surfboard is taking some componets putting them on a common plate that gives you fixed frame and using that to test something. Could be data capture or something else. For example, to test some sensors you didn’t really need a full drone. You might really just need a plate with the autopilot on it and the sensos and a power inverter going to the wall. This gives you telemetry feed and sensors. You manually fly it around by hand or by placing it on stands where you can vary orientation, and conduct experiments this way or just changing the scene between data collection all without needing to deal with a full system. 
+
+#### Full System Flight Tests
+After a few more iterations on subsystems the drone eventually got to the state shown below. There are a number of subtle differences between the two some visible and some not. The silver balls visible are part of the motion capture system that was used. This system allowed flight testing indoors which meant you did not have to wait for good weather, sunlight, or for site scheduling to do a test. This was a big development speed up as getting all those things to align before was at times very limiting. The disaster response event was one of the few test deployments we had been able to do and the testing we had ever done in a deployment. This also translated into speeding up iteration cycles for both hardware and software. By doing flight tests indoors at the lab site it was also feasible to trouble shoot problems and swap out parts much faster. The goal here was to get to project milestone requirements and to a stable enough point in the system where it could be robust enough for closer to site testing. We had worked with some construction companies to identify low risk deployment / testing opportunities such as approach slabs[^approachSlabs] and dumpster pads[^dumpsterPads] that weren’t much larger than the indoor flight test setting. During this phase P2 was leveraged to become a sensor test mule collecting data and evaluating key systems for autonomy. 
+
+<img src="/images/rebar-drone-indoor-flight-test.jpg" alt="Rebar drone ready for indoor flight testing" width="650">
+
+#### Flight Testing
+Video below shows semi-autonomous flight with an operator issuing high level commands to the drone. Such take off, go to point A, land, tie, etc. In a real flight this would be automated, but for flight testing this is not something you want as you need to be collecting data at each step and monitoring the various software, electrical, and mechanical systems during each action for anomalies. 
+
+
+
+[^tradeshow]: We did trade show on a shoestring fitting the camping chairs, camping table, marketing materials, and drone in with our clothes luggage. We also went to Home Depot and found some close enough carpet and smuggled that into the trade show which matched the official show colors close enough. (You must have carpet in your booth and rental fees for carpet, chairs, and tables can add 100s to an extra 1k on the booth price. We needed the 1k to buy more robot parts.) 
+[^dumpsterPads]: Dumpster pads aren’t good spots for demonstrating ROI on the system, but they were pretty analogous to the lab setting, and offered a low risk to failure deployment. If the robots failed, we could get a tie tool and just tie the rebar with no schedule risk to the construction company and the opportunity to test out deployment workflows and flight ops principles. Dumpster pads are also everywhere all restaurants have them. Unlike a bridge deck where we might have had to drive for hours just to get to the site there’s a good chance one is being made within 30 minutes of any suburban location. These pads would act as a necessary step in the crawl, walk, run technology development path. 
+[^approachSlabs]: An approach slab allows the road to transition on to the bridge deck. These are typically heavily reinforced like the bridge deck and are more standardized. [Here is a section from the state of Washington’s manual on them] ( https://www.wsdot.wa.gov/eesc/bridge/designmemos/Bridge%20Approach%20Slab.htm).
+[^discovery]: Ideally you shouldn't try to bias customer discovery, but we had found that tacticle real props can open up way more doors with trades than gimicky renderings. 
