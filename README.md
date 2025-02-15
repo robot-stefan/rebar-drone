@@ -16,6 +16,7 @@ The large drone above sitting indoors represented a 3rd iteration of the system 
 
 The next development cycle started immediately in December and the larger drone was first assembled in mid-January of 2020 for display at World of Concrete[^woc]. Following the January trade show, development efforts in 2020 focused on iterations to the tooling system, sensor integration testing, and flight control. For comparison, P3 was a big jump in size compared to P2. P2 could fit under P3. For the hardware my focus was on mechanical design, system architecture, harnesses, and sensor selection & placement. I was also focusing on business development efforts such as customer interviews, performance studies for benchmarking, discovery of ways to service customers such as development of a sales/support channel.  Efforts were split across getting progress on as many fronts as feasible be it hardware development or business development.
 
+[Flight Test Video](https://youtu.be/iqCwZRwf2ao)
 
 [Business Development](BusinessDevelopment.md)
 
